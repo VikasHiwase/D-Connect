@@ -13,6 +13,8 @@ import Landing from "./components/Landing";
 import Navbar from "./components/Navbar";
 import Register from "./auth/Register";
 import Login from "./auth/Login";
+import Dashboard from "./components/dashboard/Dashboard";
+import { clearCurrentProfile } from "./redux/actions/profileAction";
 
 // Check for token
 if (localStorage.jwtToken) {
@@ -28,8 +30,8 @@ if (localStorage.jwtToken) {
   if (decoded.exp < currentTime) {
     // Logout user
     store.dispatch(logoutUser());
-    // TODO: Clear current profile
-
+    // Clear current profile
+    store.dispatch(clearCurrentProfile());
     // Redirect to login
     window.location.href = "/login";
   }
@@ -45,6 +47,7 @@ function App() {
           <div className="container">
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/dashboard" component={Dashboard} />
           </div>
           <Footer />
         </div>
