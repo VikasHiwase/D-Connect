@@ -60,7 +60,7 @@ router.post(
       text: req.body.text,
       name: req.body.name,
       avatar: req.body.avatar,
-      user: req.body.id,
+      user: req.user.id,
     });
     newPost.save().then((post) => res.json(post));
   }
