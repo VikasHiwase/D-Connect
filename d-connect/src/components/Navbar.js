@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../redux/actions/authAction";
 import { clearCurrentProfile } from "../redux/actions/profileAction";
+import Background from "../img/blackSky.jpg";
 
 class Navbar extends Component {
   onLogoutClick(e) {
@@ -62,7 +63,13 @@ class Navbar extends Component {
     );
 
     return (
-      <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
+      <nav
+        style={{
+          backgroundImage: `url(${Background})`,
+          backgroundSize: "cover",
+        }}
+        className="navbar navbar-expand-sm navbar-dark sticky-top mb-4"
+      >
         <div className="container">
           <Link className="navbar-brand" to="/">
             D-Connect

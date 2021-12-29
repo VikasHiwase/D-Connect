@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../redux/actions/authAction";
 import TextFieldGroup from "../components/common/TextFieldGroup";
+import Background from "../img/bBg.jpg";
 
 class Login extends Component {
   constructor() {
@@ -23,14 +24,15 @@ class Login extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.auth.isAuthenticated) {
-      this.props.history.push("/dashboard");
+      nextProps.history.push("/dashboard");
     }
 
-    if (nextProps.errors) {
-      this.setState({ errors: nextProps.errors });
+    if (nextProps.errors !== prevState.errors) {
+      return { errors: nextProps.errors }; // <- this is setState equivalent
     }
+    return null;
   }
 
   onChangeInput(e) {
@@ -55,7 +57,13 @@ class Login extends Component {
       <div className="login">
         <div className="container">
           <div className="row">
-            <div className="col-md-8 m-auto">
+            <div
+              style={{
+                backgroundImage: `url(${Background})`,
+                backgroundSize: "cover",
+              }}
+              className="col-md-8 m-auto text-white"
+            >
               <h1 className="display-4 text-center">Log In</h1>
               <p className="lead text-center">
                 Sign in to your D-Connect account

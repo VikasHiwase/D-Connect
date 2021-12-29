@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
 import { addPost } from "../../redux/actions/postAction";
+import Background from "../../img/bBg.jpg";
 
 class PostForm extends Component {
   constructor(props) {
@@ -16,10 +17,11 @@ class PostForm extends Component {
     this.onFormSubmit = this.onFormSubmit.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.errors) {
-      this.setState({ errors: nextProps.errors });
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.errors !== prevState.errors) {
+      return { errors: nextProps.errors }; // <- this is setState equivalent
     }
+    return null;
   }
 
   onFormSubmit(e) {
@@ -46,7 +48,13 @@ class PostForm extends Component {
 
     return (
       <div className="post-form mb-3">
-        <div className="card card-info">
+        <div
+          style={{
+            backgroundImage: `url(${Background})`,
+            backgroundSize: "cover",
+          }}
+          className="card card-info border border-info"
+        >
           <div className="card-header bg-info text-white">Say Somthing...</div>
           <div className="card-body">
             <form onSubmit={this.onFormSubmit}>

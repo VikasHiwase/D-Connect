@@ -5,6 +5,7 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { registerUser } from "../redux/actions/authAction";
 import TextFieldGroup from "../components/common/TextFieldGroup";
+import Background from "../img/bBg.jpg";
 
 class Register extends Component {
   constructor() {
@@ -27,10 +28,11 @@ class Register extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.errors) {
-      this.setState({ errors: nextProps.errors });
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.errors !== prevState.errors) {
+      return { errors: nextProps.errors }; // <- this is setState equivalent
     }
+    return null;
   }
 
   onChangeInput(e) {
@@ -57,7 +59,13 @@ class Register extends Component {
       <div className="register">
         <div className="container">
           <div className="row">
-            <div className="col-md-8 m-auto">
+            <div
+              style={{
+                backgroundImage: `url(${Background})`,
+                backgroundSize: "cover",
+              }}
+              className="col-md-8 m-auto text-white"
+            >
               <h1 className="display-4 text-center">Sign Up</h1>
               <p className="lead text-center">Create your D-Connect account</p>
               <form noValidate onSubmit={this.onSubmitForm}>

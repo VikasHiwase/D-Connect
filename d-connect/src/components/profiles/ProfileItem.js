@@ -2,13 +2,20 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import isEmpty from "../../validations/is-empty";
+import Background from "../../img/bBg.jpg";
 
 class ProfileItem extends Component {
   render() {
     const { profile } = this.props;
 
     return (
-      <div className="card card-body bg-light mb-3">
+      <div
+        style={{
+          backgroundImage: `url(${Background})`,
+          backgroundSize: "cover",
+        }}
+        className="card card-body bg-light mb-3 border border-info"
+      >
         <div className="row">
           <div className="col-2">
             <img src={profile.user.avatar} alt="" className="rounded-circle" />
@@ -34,7 +41,14 @@ class ProfileItem extends Component {
             <h4>Skill Set</h4>
             <ul className="list-group">
               {profile.skills.slice(0, 4).map((skill, index) => (
-                <li key={index} className="list-group-item">
+                <li
+                  style={{
+                    backgroundImage: `url(${Background})`,
+                    backgroundSize: "cover",
+                  }}
+                  key={index}
+                  className="list-group-item"
+                >
                   <i className="fa fa-check pr-2" />
                   {skill}
                 </li>

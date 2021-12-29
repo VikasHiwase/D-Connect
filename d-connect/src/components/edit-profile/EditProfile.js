@@ -11,6 +11,7 @@ import {
   getCurrentProfile,
 } from "../../redux/actions/profileAction";
 import isEmpty from "../../validations/is-empty";
+import Background from "../../img/bBg.jpg";
 
 class CreateProfile extends Component {
   constructor(props) {
@@ -77,7 +78,7 @@ class CreateProfile extends Component {
         ? profile.social.instagram
         : "";
 
-      // Set component field state
+      // Set component fields state
       this.setState({
         handle: profile.handle,
         company: profile.company,
@@ -191,13 +192,19 @@ class CreateProfile extends Component {
       <div className="create-profile">
         <div className="container">
           <div className="row">
-            <div className="col-md-8 m-auto">
+            <div className="col-md-8 m-auto text-white">
               <Link to="/dashboard" className="btn btn-light">
                 Go Back
               </Link>
               <h1 className="display-4 text-center">Edit Profile</h1>
               <small className="d-block pb-3">* = required fields</small>
-              <form onSubmit={this.onFormSubmit}>
+              <form
+                style={{
+                  backgroundImage: `url(${Background})`,
+                  backgroundSize: "cover",
+                }}
+                onSubmit={this.onFormSubmit}
+              >
                 <TextFieldGroup
                   placeholder="* Profile Handle"
                   name="handle"

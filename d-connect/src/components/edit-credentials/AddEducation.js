@@ -5,6 +5,7 @@ import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addEducation } from "../../redux/actions/profileAction";
+import Background from "../../img/bBg.jpg";
 
 class AddEducation extends Component {
   constructor(props) {
@@ -26,10 +27,11 @@ class AddEducation extends Component {
     this.onCheck = this.onCheck.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.errors) {
-      this.setState({ errors: nextProps.errors });
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.errors !== prevState.errors) {
+      return { errors: nextProps.errors }; // <- this is setState equivalent
     }
+    return null;
   }
 
   onFormSubmit(e) {
@@ -66,7 +68,7 @@ class AddEducation extends Component {
       <div className="add-education">
         <div className="container">
           <div className="row">
-            <div className="col-md-8 m-auto">
+            <div className="col-md-8 m-auto text-white">
               <Link to="/dashboard" className="btn btn-light">
                 Go Back
               </Link>
@@ -75,7 +77,13 @@ class AddEducation extends Component {
                 Add any school or bootcamp, etc that you have attended.
               </p>
               <small className="d-block pb-3">* = required fields</small>
-              <form onSubmit={this.onFormSubmit}>
+              <form
+                style={{
+                  backgroundImage: `url(${Background})`,
+                  backgroundSize: "cover",
+                }}
+                onSubmit={this.onFormSubmit}
+              >
                 <TextFieldGroup
                   placeholder="* School"
                   name="school"

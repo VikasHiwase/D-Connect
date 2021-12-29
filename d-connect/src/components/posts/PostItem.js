@@ -8,6 +8,7 @@ import {
   likePost,
   unlikePost,
 } from "../../redux/actions/postAction";
+import Background from "../../img/bBg.jpg";
 
 class PostItem extends Component {
   onDeleteClick(id) {
@@ -36,7 +37,13 @@ class PostItem extends Component {
     const { post, auth, showActions } = this.props;
 
     return (
-      <div className="card card-body mb-3">
+      <div
+        style={{
+          backgroundImage: `url(${Background})`,
+          backgroundSize: "cover",
+        }}
+        className="card card-body mb-3 text-white border border-info"
+      >
         <div className="row">
           <div className="col-md-2">
             <a href="profile.html">

@@ -7,6 +7,7 @@ import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
 import SelectListGroup from "../common/SelectListGroup";
 import InputGroup from "../common/InputGroup";
 import { createProfile } from "../../redux/actions/profileAction";
+import Background from "../../img/bBg.jpg";
 
 class CreateProfile extends Component {
   constructor(props) {
@@ -33,10 +34,11 @@ class CreateProfile extends Component {
     this.onFormSubmit = this.onFormSubmit.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.errors) {
-      this.setState({ errors: nextProps.errors });
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.errors !== prevState.errors) {
+      return { errors: nextProps.errors }; // <- this is setState equivalent
     }
+    return null;
   }
 
   onInputChange(e) {
@@ -134,13 +136,19 @@ class CreateProfile extends Component {
       <div className="create-profile">
         <div className="container">
           <div className="row">
-            <div className="col-md-8 m-auto">
+            <div className="col-md-8 m-auto text-white">
               <h1 className="display-4 text-center">Create Your Profile</h1>
               <p className="lead text-center">
                 Let's get some information to make your profile stand out
               </p>
               <small className="d-block pb-3">* = required fields</small>
-              <form onSubmit={this.onFormSubmit}>
+              <form
+                style={{
+                  backgroundImage: `url(${Background})`,
+                  backgroundSize: "cover",
+                }}
+                onSubmit={this.onFormSubmit}
+              >
                 <TextFieldGroup
                   placeholder="* Profile Handle"
                   name="handle"

@@ -2,9 +2,13 @@ img {
   width: 100%;
 }
 
+.App {
+  background: url("./img/blackSky.jpg");
+}
+
 .landing {
   position: relative;
-  background: url("./img/bonfire.jpg") no-repeat;
+  background: url("./img/bBg.jpg") no-repeat;
   background-size: cover;
   background-position: center;
   height: 100vh;
