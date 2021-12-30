@@ -135,7 +135,7 @@ class CreateProfile extends Component {
             placeholder="Twitter Profile URL"
             name="twitter"
             icon="fab fa-twitter"
-            value={this.state.value}
+            value={this.state.twitter}
             onChange={this.onInputChange}
             error={errors.twitter}
           />
@@ -143,7 +143,7 @@ class CreateProfile extends Component {
             placeholder="Facebook Page URL"
             name="facebook"
             icon="fab fa-facebook"
-            value={this.state.value}
+            value={this.state.facebook}
             onChange={this.onInputChange}
             error={errors.facebook}
           />
@@ -151,7 +151,7 @@ class CreateProfile extends Component {
             placeholder="LinkedIn Profile URL"
             name="linkedin"
             icon="fab fa-linkedin"
-            value={this.state.value}
+            value={this.state.linkedin}
             onChange={this.onInputChange}
             error={errors.linkedin}
           />
@@ -159,7 +159,7 @@ class CreateProfile extends Component {
             placeholder="YouTube Channel URL"
             name="youtube"
             icon="fab fa-youtube"
-            value={this.state.value}
+            value={this.state.youtube}
             onChange={this.onInputChange}
             error={errors.youtube}
           />
@@ -167,7 +167,7 @@ class CreateProfile extends Component {
             placeholder="Instagram Page URL"
             name="instagram"
             icon="fab fa-instagram"
-            value={this.state.value}
+            value={this.state.instagram}
             onChange={this.onInputChange}
             error={errors.instagram}
           />
